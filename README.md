@@ -26,15 +26,16 @@
 正常登录
 预设账号 admin / password，正常登录成功。
 
-SQL 注入绕过
-用户名输入 ' OR '1'='1，密码随意，点击登录。成功绕过验证，获取所有用户数据。
+### SQL 注入绕过
+用户名输入 `' OR '1'='1`，密码随意，点击登录。成功绕过验证，获取所有用户数据。
 
-https://screenshots/01-injection-success.png
+![注入成功](screenshots/01-injection-success.png)
 
-Wireshark 流量分析
-使用 Wireshark 过滤 tcp.port == 8081，可看到恶意 payload 被明文发送。
+### Wireshark 流量分析
+使用 Wireshark 过滤 `tcp.port == 8081`，可看到恶意 payload 被明文发送。
 
-https://screenshots/02-wireshark-capture.png
+![Wireshark抓包](screenshots/02-wireshark-capture.png)
+
 
 🛡️ 防御方案：参数化查询
 原理
@@ -44,7 +45,8 @@ https://screenshots/02-wireshark-capture.png
 运行防御版本
 python app_fixed.py
 再次使用 payload ' OR '1'='1，注入失败，返回 “Login failed”。
-https://screenshots/03-defense-fail.png
+`screenshots/03-defense-fail.png`
+
 
 📝 个人收获
 理解了 SQL 注入的成因：代码与数据未分离。
