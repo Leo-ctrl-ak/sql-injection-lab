@@ -45,6 +45,7 @@ https://screenshots/02-wireshark-capture.png
 python app_fixed.py
 再次使用 payload ' OR '1'='1，注入失败，返回 “Login failed”。
 https://screenshots/03-defense-fail.png
+
 📝 个人收获
 理解了 SQL 注入的成因：代码与数据未分离。
 
